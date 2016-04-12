@@ -18,7 +18,4 @@ ENABLERANDOM=false
 
 ARGS="$MASTER_HOST $TOTAL_CORES $INPUT_FILE_PATH $TAG_NAME $OUTPUT_DIR $BALANCED ${ISDEBUG} $PATH_FILES $ACTIVATORJAR $SWB_PY ${ENABLERANDOM}"
 
-#$SPARK_HOME/bin/spark-submit --class $MAIN_CLASS --num-executors $EXECUTORS --total-executor-cores $TOTAL_CORES --master $MASTER_HOST $JAR_FILE $ARGS
-
-#log
-$SPARK_HOME/bin/spark-submit --class $MAIN_CLASS --num-executors $EXECUTORS --total-executor-cores $TOTAL_CORES --master $MASTER_HOST --conf spark.eventLog.enabled=true --conf spark.eventLog.dir=slog $JAR_FILE $ARGS
+$SPARK_HOME/bin/spark-submit --class $MAIN_CLASS --num-executors $EXECUTORS --total-executor-cores $TOTAL_CORES --master $MASTER_HOST $JAR_FILE $ARGS
