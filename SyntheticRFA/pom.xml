@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>SyntheticRFA</artifactId>
 	<version>1.0</version>
+	<packaging>jar</packaging>
 
 	<properties>
 		<scala.version>2.10</scala.version>
@@ -44,18 +45,18 @@
 				Plugins for External JAR file. They are not necessary to compile and run on Eclipse (if you configure Eclipse and your workspace correctly).
 				Uncomment these plugins when you compile via command line
 			-->
-			
+
 			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
+					<finalName>${artifactId}</finalName>
+					<outputDirectory>${dir}</outputDirectory>
 					<archive>
 						<manifest>
 							<mainClass>br.ufrj.main.SyntheticRFA</mainClass>
 						</manifest>
 					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
 				</configuration>
 			</plugin>
 			<plugin>
