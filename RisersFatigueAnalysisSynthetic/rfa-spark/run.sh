@@ -1,11 +1,11 @@
-ACTIVATORJAR=bin/Activator.jar
-JAR_FILE=bin/SyntheticRFA.jar
+ACTIVATORJAR=../rfa-implementation/bin/Activator.jar
+JAR_FILE=bin/rfa-spark.jar
 ISDEBUG=true
-PATH_FILES=files
+PATH_FILES=../files
 MAIN_CLASS="br.ufrj.main.SyntheticRFA"
 WFDIR=.
 MASTER_HOST=$1
-SWB_PY=bin/swb.py
+SWB_PY=../rfa-implementation/bin/swb.py
 OUTPUT_DIR=${WFDIR}/out
 INPUT_FILE_PATH=input.dataset
 
@@ -18,4 +18,5 @@ ENABLERANDOM=false
 
 ARGS="$MASTER_HOST $TOTAL_CORES $INPUT_FILE_PATH $TAG_NAME $OUTPUT_DIR $BALANCED ${ISDEBUG} $PATH_FILES $ACTIVATORJAR $SWB_PY ${ENABLERANDOM}"
 
+echo $ARGS
 $SPARK_HOME/bin/spark-submit --class $MAIN_CLASS --num-executors $EXECUTORS --total-executor-cores $TOTAL_CORES --master $MASTER_HOST $JAR_FILE $ARGS
