@@ -48,10 +48,9 @@ $ cd RisersFatigueAnalysisSynthetic/rfa-spark
 $ ./run.sh <spark-master-url> <num-executors> <total-executor-cores>
 ```
 Where:
-    - **spark-master-url**: The master URL for the cluster
-    - **num-executors**: Number of Apache Spark executors requested on thec cluster.
-    - **total-executor-cores**: Total Number of cores requested on the cluster.
----
+   - **spark-master-url**: The master URL for the cluster
+   - **num-executors**: Number of Apache Spark executors requested on thec cluster.
+   - **total-executor-cores**: Total Number of cores requested on the cluster.
 
 ## Source and Build:
 
