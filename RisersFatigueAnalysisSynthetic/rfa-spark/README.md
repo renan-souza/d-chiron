@@ -10,6 +10,7 @@
 Clone repository:
 ```sh
 $ git clone https://github.com/vssousa/d-chiron.git
+$ cd d-chiron
 ```
 #### Edit the input file:
 ```sh
@@ -52,6 +53,10 @@ Where:
    - **num-executors**: Number of Apache Spark executors requested on thec cluster.
    - **total-executor-cores**: Total Number of cores requested on the cluster.
 
+- Eg:
+```sh
+$ ./run.sh  spark://hostname:7077 1 2
+```
 ## Source and Build:
 
 [Source Code](rfa-spark/rfa-spark-project)
