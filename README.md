@@ -1,4 +1,4 @@
-# D-chiron Repository
+# d-Chiron Repository
 In progress...
 
 - [d-Chiron project](dchiron_project)
