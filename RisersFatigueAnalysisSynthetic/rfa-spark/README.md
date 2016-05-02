@@ -59,7 +59,7 @@ $ ./run.sh  spark://hostname:7077 1 2
 ```
 ## Source and Build:
 
-[Source Code](rfa-spark/rfa-spark-project)
+[Source Code](rfa-spark-project)
 
 ### Build Dependencies
 - [Maven 3](http://maven.apache.org)
