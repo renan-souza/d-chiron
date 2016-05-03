@@ -16,23 +16,23 @@ $ cd d-chiron
 ```sh
 $ vi RisersFatigueAnalysisSynthetic/rfa-spark/input.dataset
 ```
-- Eg:
+- Example:
 ```csv
 ID;SPLITMAP;SPLITFACTOR;MAP1;MAP2;FILTER1;F1;FILTER2;F2;REDUCE;REDUCEFACTOR
-1;5;8;5;5;5;100;5;100;5;4
+1;5;8;5;5;5;50;5;50;5;4
 ```
 - Fields:
- - **ID**:
+ - **ID**: Entry identifier
  - **SPLITMAP**: Average Task Cost in Uncompress activity (seconds)
- - **SPLITFACTOR**:
+ - **SPLITFACTOR**: Number of entries in the input dataset after uncompression
  - **MAP1**: Average Task Cost in Pre-Processing activity (seconds)
  - **MAP2**: Average Task Cost in Analyze Riser sactivity (seconds)
  - **FILTER1**:Average Task Cost in Calculate Wear and Tear activity (seconds)
- - **F1**:
+ - **F1**: Amount of entries for Calculate Wear and Tear activity to filter in % (i.e., Percentage that will continue in the flow)
  - **FILTER2**:Average Task Cost in Analyze Position activity (seconds)
- - **F2**:
+ - **F2**: Amount of entries for Analyze Position activity to filter in %(i.e., Percentage that will continue in the flow)
  - **REDUCE**: Average Task Cost in Compress Results activity (seconds)
- - **REDUCEFACTOR**:
+ - **REDUCEFACTOR**:  Number of compressed output entries
 
 ### Run
 - Start Apache Spark Cluster
@@ -53,7 +53,7 @@ Where:
    - **num-executors**: Number of Apache Spark executors requested on thec cluster.
    - **total-executor-cores**: Total Number of cores requested on the cluster.
 
-- Eg:
+- Example:
 ```sh
 $ ./run.sh  spark://hostname:7077 1 2
 ```
