@@ -11,7 +11,7 @@ In this repository, you find what is necessary to execute d-Chiron either in a c
     - [PROV-Df data model](datamodels-and-queries/PROV-Df.png)
     - [d-Chiron's Relational schema](datamodels-and-queries/relational-database-schema-dChiron-RFA.png) 
     - [OLAP queries used to test d-Chiron's user steering and runtime HIL capabilities](datamodels_and_queries/OLAP-queries.sql)
-- [Risers Fatigue Analysis Synthetic workflow](rfa-synthetic)
+- [Risers Fatigue Analysis synthetic workflow](rfa-synthetic)
     - [RFA activites](rfa-synthetic/rfa-implementation)
     - [RFA workflow on Spark](rfa-synthetic/rfa-spark)
     
