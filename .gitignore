@@ -1,4 +1,4 @@
-RisersFatigueAnalysisSynthetic/rfa-spark/rfa-spark-project/target
-RisersFatigueAnalysisSynthetic/rfa-implementation/target
+rfa-synthetic/rfa-spark/rfa-spark-project/target
+rfa-synthetic/rfa-implementation/target
 exp/bin/Activator.jar
 exp/bin/SyntheticRFA.jar
