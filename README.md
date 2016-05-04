@@ -3,8 +3,10 @@ Welcome to d-Chiron repository. d-Chiron is a Data-intensive Scalable system tha
 
 # Contents
 
-- [d-Chiron project](d-chiron-project) 
-- [Chiron project](chiron-project)
+In this repository, you find what is necessary to execute d-Chiron either in a cluster or standalone. The original Chiron is also available. d-Chiron data models and user steering OLAP queries are provided. The code for Risers Fatigue Analysis (RFA), a synthetic workflow based on a real case study in oil & gas domain, is available. The workflow modeled and ready to be tested both in d-Chiron and Spark are avaiable. 
+
+- [d-Chiron](d-chiron-project) 
+- [Chiron](chiron-project)
 - [Data models and OLAP queries](datamodels-and-queries/) 
     - [PROV-Df data model](datamodels-and-queries/PROV-Df.png)
     - [d-Chiron's Relational schema](datamodels-and-queries/relational-database-schema-dChiron-RFA.png) 
