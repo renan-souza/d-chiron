@@ -14,7 +14,7 @@ $ cd d-chiron
 ```
 #### Edit the input file:
 ```sh
-$ vi RisersFatigueAnalysisSynthetic/rfa-spark/input.dataset
+$ vi rfa-synthetic/rfa-spark/input.dataset
 ```
 - Example:
 ```csv
@@ -35,14 +35,14 @@ ID;SPLITMAP;SPLITFACTOR;MAP1;MAP2;FILTER1;F1;FILTER2;F2;REDUCE;REDUCEFACTOR
  - **REDUCEFACTOR**:  Number of compressed output entries
 
 ### Run
-- Start Apache Spark Cluster
+- [Start Apache Spark Cluster](https://spark.apache.org/docs/1.1.0/cluster-overview.html)
 - Set SPARK_HOME environment variable
 ```sh
 $ export SPARK_HOME=/path/to/spark
 ```
 - Change directory to rfa-spark:
 ```sh
-$ cd RisersFatigueAnalysisSynthetic/rfa-spark
+$ cd rfa-synthetic/rfa-spark
 ```
 - Run:
 ```sh
@@ -68,7 +68,7 @@ $ ./run.sh  spark://hostname:7077 1 2
 ### Build
 - Change directory to rfa-spark-project:
 ```sh
-$ cd RisersFatigueAnalysisSynthetic/rfa-spark/rfa-spark-project
+$ cd rfa-synthetic/rfa-spark/rfa-spark-project
 ```
 - Maven
 ```sh
