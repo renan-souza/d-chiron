@@ -160,7 +160,6 @@ CREATE TABLE IF NOT EXISTS %=DBNAME%.eactivation (
 ) 
 Engine=NDBCLUSTER
 PARTITION BY KEY(taskid, actid, machineid)
--- PARTITIONS 26;
 PARTITIONS %=NUMBER_OF_PARTITIONS%;
 -- Number of slave machines in cluster
 
