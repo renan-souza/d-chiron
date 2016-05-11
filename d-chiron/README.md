@@ -20,7 +20,8 @@
     $ tar -xvvf mysql-cluster-gpl-X.Y.Z-plataform.tar.gz
     ```
 4. Change working directory to d-Chiron:
-    ```bassh
+    
+    ```bash
     $ cd d-chiron/d-chiron
     ```
 5.  Setup  MySQL Cluster for d-Chiron:
@@ -58,7 +59,7 @@
 - [Use of the XML file from RFA workflow](../rfa-synthetic/rfa-dchiron/rfa-dchiron-wf.xml):
     
     ```sh
-        vi SciCumulus-Synthetic-VLDB.xml
+    $ vi rfa-dchiron-wf.xml
     ```
     - Replace `full/to/path/repositoryroot/` ocurrences with the full path to this repository root directory
 
@@ -82,15 +83,18 @@
 Scripts to submit workflow execution using d-Chiron can be found in ....
 
 1. Start MySQL Cluster instances:
-```bash
-$ ./invokestartdb.sh
-```
+
+    ```bash
+    $ ./invokestartdb.sh <mysql_root_directory>
+    ```
 
 2. Submit workflow execution:
-```bash
-$ ./invokewf.sh
-```
+
+    ```bash
+    $ ./invokewf.sh <mysql_root_directory>
+    ```
 3. Shutdown MySQL Cluster instances:
-```bash
-$ ./invokeshutdown.sh
-```
+
+    ```bash
+    $ ./invokeshutdown.sh <mysql_root_directory>
+    ```
