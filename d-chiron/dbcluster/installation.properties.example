@@ -1,0 +1,36 @@
+#General Properties:
+cant_connect_msg=ERROR 2003 (HY000): Can't connect to MySQL
+installationRootDirectory=/full/path/to/mysql/nodes/root
+#MySQL basedir must be placed in {installationRootDirectory}/usr/local/mysql
+base_data_dir=/full/path/to/mysql/nodes/datanode
+config_ini_file=/full/path/to/mysql/nodes/root/0/var/lib/mysql/config.ini
+is_shared_disk_installation=true
+is_ssh=true
+
+number_of_datanodes=1
+number_of_sqlnodes=1
+number_of_mgm_nodes=1
+
+#Start Properties
+#Possible roles: ndb, sqln, mgm. Leave quotes if you want dedicated nodes.
+chiron_accumulate_roles=ndb,mgm,sqln
+db_accumulate_roles=ndb,mgm,sqln
+
+init_secs_wait=10
+max_trials_connect=20
+reinstall=true
+
+#Shutdown Properties
+shutdown_secs_wait=30
+
+
+#Sleeps
+CHIRON_TIME=6
+EWORKFLOW_TIME=10
+LOAD_PARAM_SPACE_TIME=10
+QUERY_ACTIVATION_TIME=1
+INITIAL_TIME=15
+LOOP_MAX_TRIALS=1000
+CHECK_STATUS_TIME=50
+USE_SQL_BARRIER=false
+CUT_HEAP_COEF=500

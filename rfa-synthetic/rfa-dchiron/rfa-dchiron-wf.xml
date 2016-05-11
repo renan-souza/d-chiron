@@ -1,0 +1,152 @@
+<SciCumulus>
+	<environment type="LOCAL" verbose="true" />
+	<constraint workflow_exectag="wf1" cores="2" performance="true" disable_file_operations="true" />
+	<workspace workflow_dir="full/to/path/repositoryroot/rfa-synthetic/rfa-dchiron"/>
+	<database name="scc2" username="root" password="" port="3306" dbcluster_dir="full/to/path/repositoryroot/d-chiron/dbcluster" />
+	<conceptualWorkflow tag="wf1" description="">
+		<activity tag="GatherDataFromRisers" description="" type="SPLIT_MAP"
+		activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=SPLITMAP ID=%=ID% SPLITMAP=%=SPLITMAP% SPLITFACTOR=%=SPLITFACTOR% MAP1=%=MAP1% MAP2=%=MAP2% FILTER1=%=FILTER1% FILTERFACTOR1=%=FILTERFACTOR1% FILTER2=%=FILTER2% FILTERFACTOR2=%=FILTERFACTOR2% REDUCE=%=REDUCE% REDUCEFACTOR=%=REDUCEFACTOR% PATH=full/to/path/repositoryroot/rfa-synthetic/files BALANCED=true ENABLERANDOM=false">
+			<relation reltype="Input" name="iGatherDataFromRisers"/>
+			<relation reltype="Output" name="oGatherDataFromRisers"/>
+			<field name="ID" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="SPLITMAP" type="float" input="iGatherDataFromRisers" decimalplaces="0"/>
+			<field name="SPLITFACTOR" type="float" input="iGatherDataFromRisers" decimalplaces="0"/>
+			<field name="MAP1" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="MAP2" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="FILTER1" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="FILTERFACTOR1" type="float" input="iGatherDataFromRisers" decimalplaces="0"/>
+			<field name="F1" type="float" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="FILTER2" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="FILTERFACTOR2" type="float" input="iGatherDataFromRisers" decimalplaces="0"/>
+			<field name="F2" type="float" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="REDUCE" type="float" input="iGatherDataFromRisers" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="REDUCEFACTOR" type="float" input="iGatherDataFromRisers" decimalplaces="0"/>
+			<field name="REDUCEVALUE" type="float" output="oGatherDataFromRisers" decimalplaces="0"/>
+			<field name="IFILE" type="file" output="oGatherDataFromRisers" />
+    	</activity>
+
+		<activity tag="PreProcessing" description="" type="MAP"
+		activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=MAP1 ID=%=ID% MAP1=%=MAP1% MAP2=%=MAP2% FILTER1=%=FILTER1% F1=%=F1% FILTER2=%=FILTER2% F2=%=F2% REDUCE=%=REDUCE% REDUCEVALUE=%=REDUCEVALUE% IFILE=%=IFILE% PATH=full/to/path/repositoryroot/rfa-synthetic/files ENABLERANDOM=false">
+			<relation reltype="Input" dependency="GatherDataFromRisers"/>
+			<relation reltype="Output" name="oPreProcessing" />
+			<field name="ID" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="MAP1" type="float" decimalplaces="0"/>
+			<field name="MAP2" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="FILTER1" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="F1" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="FILTER2" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="F2" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="REDUCE" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="REDUCEVALUE" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="IFILE" type="file" />
+			<field name="SISAI" type="file" output="oPreProcessing" />
+			<field name="NUMBER" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="NAME" type="text" output="oPreProcessing"/>
+			<field name="CX" type="float" output="oPreProcessing" decimalplaces="4"/>
+			<field name="CY" type="float" output="oPreProcessing" decimalplaces="4"/>
+			<field name="CZ" type="float" output="oPreProcessing" decimalplaces="4"/>
+			<field name="SX" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="SY" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="SZ" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="RX" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="RY" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="RZ" type="float" output="oPreProcessing" decimalplaces="0"/>
+			<field name="FAX" type="float" output="oPreProcessing" decimalplaces="0"/>
+    	</activity>
+
+		<activity tag="AnalyzeRisers" description="" type="MAP"
+    activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=MAP2 ID=%=ID% MAP2=%=MAP2% FILTER1=%=FILTER1% F1=%=F1% FILTER2=%=FILTER2% F2=%=F2% REDUCE=%=REDUCE% REDUCEVALUE=%=REDUCEVALUE% SISAI=%=SISAI% PATH=full/to/path/repositoryroot/rfa-synthetic/files ENABLERANDOM=false">
+			<relation reltype="Input" dependency="PreProcessing"/>
+			<relation reltype="Output" name="oAnalyzeRisers" />
+			<field name="ID" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="MAP2" type="float" decimalplaces="0"/>
+			<field name="FILTER1" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="F1" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="FILTER2" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="F2" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="REDUCE" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="REDUCEVALUE" type="float" output="oAnalyzeRisers" decimalplaces="0"/>
+			<field name="SISAI" type="file" />
+			<field name="NUMBER" type="float" decimalplaces="0"/>
+			<field name="NAME" type="text"/>
+			<field name="CX" type="float" decimalplaces="4"/>
+			<field name="CY" type="float" decimalplaces="4"/>
+			<field name="CZ" type="float" decimalplaces="4"/>
+			<field name="SX" type="float" decimalplaces="0"/>
+			<field name="SY" type="float" decimalplaces="0"/>
+			<field name="SZ" type="float" decimalplaces="0"/>
+			<field name="RX" type="float" decimalplaces="0"/>
+			<field name="RY" type="float" decimalplaces="0"/>
+			<field name="RZ" type="float" decimalplaces="0"/>
+			<field name="FAX" type="float" decimalplaces="0"/>
+			<field name="SSSAI" type="file" output="oAnalyzeRisers" />
+			<field name="ELEMENT" type="text" output="oAnalyzeRisers" />
+			<field name="NODE" type="text" output="oAnalyzeRisers" />
+			<field name="TENSION" type="float" output="oAnalyzeRisers" decimalplaces="1" />
+			<field name="FX" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="FY" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="FZ" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="MX" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="MY" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="MZ" type="float" output="oAnalyzeRisers" decimalplaces="4" />
+			<field name="CURVATURE" type="float" output="oAnalyzeRisers" decimalplaces="2" />
+    	</activity>
+
+    	<activity tag="CalculateWearAndTear" description="" type="FILTER"
+    activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=FILTER1 ID=%=ID% FILTER1=%=FILTER1% F1=%=F1% REDUCE=%=REDUCE% REDUCEVALUE=%=REDUCEVALUE% ENABLERANDOM=false">
+			<relation reltype="Input" dependency="AnalyzeRisers"/>
+			<relation reltype="Output" name="oCalculateWearAndTear" />
+			<field name="ID" type="float" output="oCalculateWearAndTear" decimalplaces="0"/>
+			<field name="FILTER1" type="float" decimalplaces="0"/>
+			<field name="F1" type="float" decimalplaces="0"/>
+			<field name="FILTER2" type="float" decimalplaces="0"/>
+			<field name="F2" type="float" decimalplaces="0"/>
+			<field name="REDUCE" type="float" output="oCalculateWearAndTear" decimalplaces="0"/>
+			<field name="REDUCEVALUE" type="float" output="oCalculateWearAndTear" decimalplaces="0"/>
+			<field name="SSSAI" type="file" />
+			<field name="ELEMENT" type="text"/>
+			<field name="NODE" type="text"/>
+			<field name="TENSION" type="float" decimalplaces="1"/>
+			<field name="FX" type="float" decimalplaces="4"/>
+			<field name="FY" type="float" decimalplaces="4"/>
+			<field name="FZ" type="float" decimalplaces="4"/>
+			<field name="MX" type="float" decimalplaces="4"/>
+			<field name="MY" type="float" decimalplaces="4"/>
+			<field name="MZ" type="float" decimalplaces="4"/>
+			<field name="CURVATURE" type="float" decimalplaces="2"/>
+    	</activity>
+    	<activity tag="AnalyzePosition" description="" type="FILTER"
+    activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=FILTER2 ID=%=ID% FILTER2=%=FILTER2% F2=%=F2% ENABLERANDOM=false">
+			<relation reltype="Input" dependency="AnalyzeRisers"/>
+			<relation reltype="Output" name="oAnalyzePosition" />
+			<field name="ID" type="float" output="oAnalyzePosition" decimalplaces="0"/>
+			<field name="FILTER1" type="float" decimalplaces="0"/>
+			<field name="F1" type="float" decimalplaces="0"/>
+			<field name="FILTER2" type="float" decimalplaces="0"/>
+			<field name="F2" type="float" decimalplaces="0"/>
+    	</activity>
+
+
+		<activity tag="JoinResults" description="" type="MR_QUERY" activation="SELECT I.EWKFID, I.RELKEY, I.ID, I.REDUCE, I.REDUCEVALUE FROM ocalculatewearandtear as I, oanalyzeposition as Y WHERE  I.RELKEY = Y.RELKEY AND I.ewkfid=%=EWKFID% AND Y.ewkfid=I.ewkfid">
+			<relation reltype="Input" dependency="CalculateWearAndTear" />
+			<relation reltype="Input" dependency="AnalyzePosition" />
+			<relation reltype="Output" name="oJoinResults" />
+			<field name="ID" type="float" output="oJoinResults" decimalplaces="0" />
+			<field name="REDUCE" type="float" output="oJoinResults" decimalplaces="0" />
+			<field name="REDUCEVALUE" type="float" output="oJoinResults" decimalplaces="0" />
+		</activity>
+
+		<activity tag="CompressResults" description="" type="REDUCE" operand="REDUCEVALUE" activation="java -jar full/to/path/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=REDUCE RELATION=oJoinResults ENABLERANDOM=false">
+			<relation reltype="Input" dependency="JoinResults"/>
+			<relation reltype="Output" name="oCompressResults"/>
+			<field name="ID" type="float" output="oCompressResults" decimalplaces="0"/>
+			<field name="REDUCE" type="float" output="oCompressResults" decimalplaces="0"/>
+			<field name="REDUCEVALUE" type="float" output="oCompressResults" decimalplaces="0"/>
+		</activity>
+		-->
+
+	</conceptualWorkflow>
+	<executionWorkflow tag="wf1" execmodel="DYN_FAF" expdir="%=WFDIR%/exp" adaptive="false" chunksize="single" >
+		<relation name="iGatherDataFromRisers" filename="ivldb2.dataset"/>
+	</executionWorkflow>
+</SciCumulus>
