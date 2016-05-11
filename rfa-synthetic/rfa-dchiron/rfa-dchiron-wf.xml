@@ -143,7 +143,6 @@
 			<field name="REDUCE" type="float" output="oCompressResults" decimalplaces="0"/>
 			<field name="REDUCEVALUE" type="float" output="oCompressResults" decimalplaces="0"/>
 		</activity>
-		-->
 
 	</conceptualWorkflow>
 	<executionWorkflow tag="wf1" execmodel="DYN_FAF" expdir="%=WFDIR%/exp" adaptive="false" chunksize="single" >
