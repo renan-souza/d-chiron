@@ -147,6 +147,6 @@
 
 	</conceptualWorkflow>
 	<executionWorkflow tag="wf1" execmodel="DYN_FAF" expdir="%=WFDIR%/exp" adaptive="false" chunksize="single" >
-		<relation name="iGatherDataFromRisers" filename="ivldb2.dataset"/>
+		<relation name="iGatherDataFromRisers" filename="input.dataset"/>
 	</executionWorkflow>
 </SciCumulus>
