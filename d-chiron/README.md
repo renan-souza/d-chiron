@@ -26,11 +26,10 @@ $ cd d-chiron/d-chiron
 ```bash
 $ ./setupmysql.sh <mysql_path> <mysql_directory> <data_directory> <number_of_nodes>
 ```
-
-    - `mysql_path`: fullpath to the unpacked MySQL Cluster directory
-    - `mysql_directory`: root directory where MySQL cluster directories will be placed into
-    - `data_directory`: base directory where data from data nodes will be placed into
-    - `number_of_nodes`: Maximum number of nodes that will run MySQL Cluster. If there are, for example, 5 database nodes (1 mgm_node, 2 sql_nodes, 2 data_nodes), this number should be at least 5.
+ - `mysql_path`: fullpath to the unpacked MySQL Cluster directory
+ - `mysql_directory`: root directory where MySQL cluster directories will be placed into
+ - `data_directory`: base directory where data from data nodes will be placed into
+ - `number_of_nodes`: Maximum number of nodes that will run MySQL Cluster. If there are, for example, 5 database nodes (1 mgm_node, 2 sql_nodes, 2 data_nodes), this number should be at least 5.
 
 ## Configuration
 
@@ -38,15 +37,13 @@ $ ./setupmysql.sh <mysql_path> <mysql_directory> <data_directory> <number_of_nod
 ```bash
 $ vi dbcluster/installation.properties
 ```
-    - [Follow this link for an example](dbcluster/installation.properties.example)
-    - Define installationRootDirectory and base_data_dir as you defined in Setup#5 for mysql_root_directory and base_data_directory, respectively.
-
-    Chose the number of nodes used by  MySQL Cluster
-        - number_of_datanodes
-        - number_of_sqlnodes
-        - number_of_mgm_node
-
-    All other configurations may be left as the example file.
+ - [Follow this link for an example](dbcluster/installation.properties.example)
+ - Define installationRootDirectory and base_data_dir as you defined in Setup#5 for mysql_root_directory an base_data_directory, respectively.
+ - Chose the number of nodes used by  MySQL Cluster
+  - number_of_datanodes
+  - number_of_sqlnodes
+  - number_of_mgm_node
+ - All other configurations may be left as the example file.
 
 ## Workflow Configuration
 
@@ -54,11 +51,11 @@ $ vi dbcluster/installation.properties
 ```sh
 $ cd ../rfa-synthetic/rfa-dchiron
 ```
-- [Use of the XML file from RFA workflow](../rfa-synthetic/rfa-dchiron/SciCumulus-Synthetic-VLDB.xml):
+- [Use of the XML file from RFA workflow](../rfa-synthetic/rfa-dchiron/rfa-dchiron-wf.xml):
 ```sh
     vi SciCumulus-Synthetic-VLDB.xml
 ```
-    - Replace `full/to/path/repositoryroot/` ocurrences with the full path to this repository root directory
+ - Replace `full/to/path/repositoryroot/` ocurrences with the full path to this repository root directory
 
 - Edit machines.conf with nodes hostnames, ports, and ranks for MPI initialization:
 ```sh
