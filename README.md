@@ -1,5 +1,5 @@
 # d-Chiron Repository
-Welcome to d-Chiron repository. d-Chiron is a Data-intensive Scalable system that manages complex big data workflows, registers big data provenance at runtine to enable user steering and Human in the Loop. d-Chiron utilizes MySQL Cluster as its core in-memory distributed data structure used for managing execution, provenance, and domain dataflow data.
+Welcome to d-Chiron repository. d-Chiron is a Data-intensive Scalable system that manages complex big data workflows and registers big data provenance at runtine to enable user steering and Human in the Loop. d-Chiron utilizes MySQL Cluster as its core in-memory distributed data structure used for managing execution, provenance, and domain dataflow data.
 
 # Contents
 
