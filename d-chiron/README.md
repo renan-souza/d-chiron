@@ -3,6 +3,7 @@
 ## Dependecies
 - Java JRE 1.7 64 bit or newer
 - MySQL Cluster
+- libaio1 64 bit
 - The front node (node from which the other processes will start) should be able to access the other nodes via ssh using public key.
 
 ## Setup
