@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS %=DBNAME%.eactivity (
   templatedir LONGTEXT NULL,
   constrained CHAR(1) NULL DEFAULT 'F',
   finishedloadingdata CHAR(1) NULL DEFAULT 'F',
+  workers_that_finished INT NULL DEFAULT 0,
   PRIMARY KEY (wkfid, actid),
   INDEX e_activity_wkfid (wkfid ASC),
   UNIQUE INDEX eactivity_actid (actid ASC),
@@ -150,7 +151,7 @@ CREATE TABLE IF NOT EXISTS %=DBNAME%.eactivation (
   tout VARCHAR(250) NULL,
   starttime DATETIME NULL,
   endtime DATETIME NULL,
-  status varchar(20),
+  status varchar(30),
   extractor VARCHAR(1024) NULL,
   PRIMARY KEY (taskid, actid, machineid) USING HASH,
   UNIQUE KEY (taskid) USING HASH,
@@ -175,9 +176,8 @@ CREATE TABLE IF NOT EXISTS %=DBNAME%.eperfeval (
   machineid INT NULL,
   processor INT NULL,
   ewkfid INT NULL,
-  taskid INT NULL,  
-  provfunction varchar(100) NULL
- ) Engine=NDBCLUSTER;
+  taskid INT NULL,
+  provfunction varchar(100) NULL) Engine=NDBCLUSTER;
 
 -- ----------------------------------------------------------------------------
 -- Table %=DBNAME%.eworkflow
@@ -209,7 +209,80 @@ CREATE TABLE IF NOT EXISTS %=DBNAME%.cmapping (
   PRIMARY KEY (cmapid,crelid),
   UNIQUE INDEX cmapping_unique_id (cmapid ASC)
   ) Engine=NDBCLUSTER;
-  
+
+-- ---------------------------
+-- User interaction tables --
+-- ---------------------------   
+
+CREATE TABLE IF NOT EXISTS %=DBNAME%.umonitoring (
+  monitoringid INT NOT NULL AUTO_INCREMENT,
+  monitoringinterval INT NOT NULL,
+  monitoringquery LONGTEXT NULL,
+  booleanop varchar(10) null,
+  interestquery LONGTEXT null,  
+  wkfid int null,  
+  CONSTRAINT uconfig_wkfid_fk FOREIGN KEY (wkfid)
+    REFERENCES %=DBNAME%.eworkflow(ewkfid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL, 
+  PRIMARY KEY (monitoringid)  
+)Engine=NDBCLUSTER;
+
+CREATE TABLE IF NOT EXISTS %=DBNAME%.Umonitoringresult (
+  monitoringresultid INT NOT NULL AUTO_INCREMENT,
+  iteration int null,
+  monitoringid INT NOT NULL,
+  time datetime,
+  monitoringvalue double,
+  interestvalue double,
+  satisfy varchar(1),
+  CONSTRAINT Umonitoringresult_configid_fk FOREIGN KEY (monitoringid)
+    REFERENCES %=DBNAME%.umonitoring(monitoringid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL, 
+  PRIMARY KEY (monitoringresultid)  
+)Engine=NDBCLUSTER;
+
+CREATE TABLE IF NOT EXISTS %=DBNAME%.user (
+  userid INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(200) NULL,
+  PRIMARY KEY (userid)  
+)Engine=NDBCLUSTER;
+
+
+CREATE TABLE IF NOT EXISTS %=DBNAME%.Uquery (
+  queryid INT NOT NULL AUTO_INCREMENT,
+  rawquery LONGTEXT NULL,
+  processedtasksquery LONGTEXT NULL,
+  wkfid int null,  
+  userid int null,
+  issuedtime datetime,
+  qtype varchar(50),  
+  PRIMARY KEY (queryid),
+  CONSTRAINT uquery_wkfid_fk FOREIGN KEY (wkfid)
+    REFERENCES %=DBNAME%.eworkflow(ewkfid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL, 
+CONSTRAINT uquery_userid_fk FOREIGN KEY (userid)
+    REFERENCES %=DBNAME%.user(userid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL  
+)Engine=NDBCLUSTER;
+
+CREATE TABLE IF NOT EXISTS %=DBNAME%.utasks_queried (
+  queryid int not null,
+  taskid int not null,  
+  PRIMARY KEY (queryid, taskid),
+  CONSTRAINT tasks_removed_queryid_fk FOREIGN KEY (queryid)
+    REFERENCES %=DBNAME%.Uquery(queryid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL, 
+ CONSTRAINT tasks_removed_taskid_fk FOREIGN KEY (taskid)
+    REFERENCES %=DBNAME%.eactivation(taskid)
+    ON DELETE CASCADE
+    ON UPDATE SET NULL
+)Engine=NDBCLUSTER;
+
   
 SET FOREIGN_KEY_CHECKS = 1;
 
