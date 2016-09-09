@@ -117,7 +117,7 @@ Scripts to submit workflow execution using d-Chiron can be found in ....
     $ java -jar Monitor.jar --start
     ```
 	
-1. For each monitoring query, the result will be stored in `UMonitoringResult` at each time interval defined for the query. 
+1. For each monitoring query, the result will be stored in `UMonitoringResult` during workflow execution at each time interval defined for the query. 
 	
 ## Steer
 
