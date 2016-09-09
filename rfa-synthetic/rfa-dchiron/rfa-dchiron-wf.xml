@@ -152,20 +152,20 @@
 			<field name="CURVATURE" type="float" output="oCurvatureCriticalCaseSelection" decimalplaces="2" />			
     	</activity>
 		
-		<activity tag="JoinResults" description="" type="MR_QUERY" activation="SELECT I.EWKFID, I.RELKEY, I.ID, I.REDUCE, I.REDUCEVALUE, I.TENSION, I.CURVATURE, abs(CURVATURE+TENSION*0.1*rand()) as LIFECOEFF FROM oCurvatureCriticalCaseSelection as I">
+		<activity tag="CalculateFatigueLife" description="" type="MR_QUERY" activation="SELECT I.EWKFID, I.RELKEY, I.ID, I.REDUCE, I.REDUCEVALUE, I.TENSION, I.CURVATURE, abs(exp(CURVATURE)+TENSION*0.1*rand()) as LIFECOEFF FROM oCurvatureCriticalCaseSelection as I">
 			<relation reltype="Input" dependency="CurvatureCriticalCaseSelection" /> 
-			<relation reltype="Output" name="oJoinResults" /> 
-			<field name="ID" type="float" output="oJoinResults" decimalplaces="0" /> 
-			<field name="REDUCE" type="float" output="oJoinResults" decimalplaces="0" /> 
-			<field name="REDUCEVALUE" type="float" output="oJoinResults" decimalplaces="0" /> 
-			<field name="CURVATURE" type="float" decimalplaces="2" output="oJoinResults" />
-			<field name="TENSION" type="float" decimalplaces="1" output="oJoinResults"/>
-			<field name="TENSION" type="float" decimalplaces="1" output="oJoinResults"/>
-			<field name="LIFECOEFF" type="float" decimalplaces="3" output="oJoinResults"/>
+			<relation reltype="Output" name="oCalculateFatigueLife" /> 
+			<field name="ID" type="float" output="oCalculateFatigueLife" decimalplaces="0" /> 
+			<field name="REDUCE" type="float" output="oCalculateFatigueLife" decimalplaces="0" /> 
+			<field name="REDUCEVALUE" type="float" output="oCalculateFatigueLife" decimalplaces="0" /> 
+			<field name="CURVATURE" type="float" decimalplaces="2" output="oCalculateFatigueLife" />
+			<field name="TENSION" type="float" decimalplaces="1" output="oCalculateFatigueLife"/>
+			<field name="TENSION" type="float" decimalplaces="1" output="oCalculateFatigueLife"/>
+			<field name="LIFECOEFF" type="float" decimalplaces="3" output="oCalculateFatigueLife"/>
 		</activity>	
 		
-		<activity tag="CompressResults" description="" type="REDUCE" operand="REDUCEVALUE" activation="java -jar /full/path/to/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=REDUCE RELATION=oJoinResults ENABLERANDOM=true">
-			<relation reltype="Input" dependency="JoinResults"/>
+		<activity tag="CompressResults" description="" type="REDUCE" operand="REDUCEVALUE" activation="java -jar /full/path/to/repositoryroot/rfa-synthetic/rfa-activities/bin/Activator.jar TYPE=REDUCE RELATION=oCalculateFatigueLife ENABLERANDOM=true">
+			<relation reltype="Input" dependency="CalculateFatigueLife"/>
 			<relation reltype="Output" name="oCompressResults"/>
 			<field name="ID" type="float" output="oCompressResults" decimalplaces="0"/>
 			<field name="REDUCE" type="float" output="oCompressResults" decimalplaces="0"/>
