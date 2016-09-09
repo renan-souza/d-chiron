@@ -99,3 +99,34 @@ Scripts to submit workflow execution using d-Chiron can be found in ....
     ```bash
     $ ./invokeshutdown.sh <mysql_root_directory>
     ```
+
+## Monitor
+
+1. Add new monitoring queries before or during workflow execution, informing the monitoring interval. Example:
+
+    ```sql
+    insert into dchiron.umonitoring(monitoringinterval, monitoringquery) values (
+        10, 
+        'select avg(g.map2) from dchiron.eactivation artask, rfa.ogatherdatafromrisers g, rfa.opreprocessing p, rfa.oanalyzerisers r where r.previoustaskid = p.nexttaskid and p.previoustaskid = g.nexttaskid and r.previoustaskid = artask.taskid and (artask.endtime-artask.starttime) > (select avg(endtime-starttime) from scc2.eactivation where actid=3);'
+    );
+    ```
+
+1. Start the `Monitor` module:
+
+    ```bash
+    $ java -jar Monitor.jar --start
+    ```
+	
+1. For each monitoring query, the result will be stored in `UMonitoringResult` during workflow execution at each time interval defined for the query. 
+	
+## Steer
+
+#### Removing slices
+
+1. First, determine the select predicates to determine a slice to be removed. For example, `map1 > 70000`. 
+
+2. Then, run a steering query to cut off the slice:
+
+    ```bash
+    $ java -jar --xml=rfa-dchiron-wf.xml --user=peter --type=REMOVE_TUPLES --tasksquery="select  nexttaskid  from wf1.ogatherdatafromrisers where map1 > 70000" 
+    ````
