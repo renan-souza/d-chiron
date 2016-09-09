@@ -6,12 +6,12 @@ Welcome to d-Chiron repository. d-Chiron is a Scientific Workflow Management Sys
 In this repository, you find what is necessary to execute d-Chiron either in a cluster or standalone. d-Chiron data models and provenance data interactive queries are provided. The code for Risers Fatigue Analysis (RFA), a synthetic workflow based on a real case study in the oil & gas industry, is available. The workflow modeled and ready to be tested is avaiable. 
 
 - [d-Chiron](d-chiron) 
-- [Data models and OLAP queries](datamodels-and-queries/) 
-    - [PROV-Df data model](datamodels-and-queries/PROV-Df.png)
-    - [d-Chiron's Relational schema](datamodels-and-queries/relational-database-schema-dChiron-RFA.png) 
-    - [Provenance interactive queries](datamodels-and-queries/OLAP-queries.sql)
+- [Data models](data-models) 
+    - [PROV-Wf-extended data model](data-models/PROV-Wf-extended.png)
+    - [d-Chiron's Relational schema](data-models/relational-database-schema-dChiron-RFA.png) 
+- [Data provenance queries](queries)
 - [Risers Fatigue Analysis synthetic workflow](rfa-synthetic)
-    - [RFA activites](rfa-synthetic/rfa-activities)
+    - [RFA activites implementation](rfa-synthetic/rfa-activities)
 
 # Team
 
