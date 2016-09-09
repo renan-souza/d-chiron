@@ -174,7 +174,7 @@
 		
 	</conceptualWorkflow>
 	
-	<executionWorkflow tag="wf1" execmodel="DYN_FTF" expdir="%=WFDIR%/exp" adaptive="false" chunksize="single" >
+	<executionWorkflow tag="wf1" execmodel="DYN_FAF" expdir="%=WFDIR%/exp" adaptive="false" chunksize="single" monitor_interval="30">
 		<relation name="iDataGathering" filename="input.dataset"/>
 	</executionWorkflow>
 </SciCumulus>
