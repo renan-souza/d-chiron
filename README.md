@@ -12,3 +12,38 @@ In this repository, you find what is necessary to execute d-Chiron either in a c
     - [Provenance interactive queries](datamodels-and-queries/OLAP-queries.sql)
 - [Risers Fatigue Analysis synthetic workflow](rfa-synthetic)
     - [RFA activites](rfa-synthetic/rfa-activities)
+
+# Team
+
+### Renan Souza
+    PhD student at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    Research Software Engineer at IBM Brazil
+    email: renanfs at cos dot ufrj dot br
+
+### Vítor Silva
+    PhD candidate at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    email: silva at cos dot ufrj dot br
+
+### Pedro Miranda
+    Master student at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    email: pedropmiranda at poli dot ufrj dot br
+
+### Alexandre A. B. Lima
+    Professor at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    email: assis at cos dot ufrj dot br
+
+### Daniel de Oliveira
+    Professor at Fluminense Federal University (UFF)
+    email: danielcmo at ic dot uff dot br
+
+### Alvaro LGA Coutinho
+    Professor at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    email: alvaro at nacad dot ufrj dot br
+
+### Patrick Valduriez
+    Professor at INRIA
+    email: patrick dot valduriez at inria dot fr
+
+### Marta Mattoso
+    Professor at COPPE/Federal University of Rio de Janeiro (UFRJ)
+    email: marta at cos dot ufrj dot br
