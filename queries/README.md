@@ -110,7 +110,7 @@ WHERE
 ORDER BY stress.stress_fatigue_val, mesh.fieldname, hist.fieldname
 ```
 
-### (Query 5)
+### Query 5
 Determine the average of each environmental conditions (output of Data Gathering – Activity 1) associated to the tasks that are taking execution time more than 1.5 the average of Curvature Critical Case Selection (Activity 5).
 
 ```sql
@@ -136,7 +136,7 @@ WHERE
 ```
 
 
-### (Query 6)
+### Query 6
 Determine the finite element meshes files (output of Preprocessing – Activity 2) associated to the tasks that are finishing with error status.
 
 ```sql
@@ -156,7 +156,7 @@ ORDER BY f.size DESC
 ```
 
 
-### (Query 7)
+### Query 7
 List the 5 computing nodes with the greatest number of Preprocessing activity tasks that are consuming tuples that contain wind speed values greater than 70 Km/h.
 
 ```sql
